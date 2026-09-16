@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Football Hub - Live Hub</title>
+    <title>Pro Football Hub - Champions Edition</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -24,18 +24,18 @@
         }
         header {
             background: linear-gradient(135deg, #1e293b, #0f172a);
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             border-bottom: 3px solid var(--accent);
         }
-        h1 { margin: 0; color: var(--accent); font-size: 2rem; }
+        h1 { margin: 0; color: var(--accent); font-size: 2.2rem; }
         
         /* Navigation Tabs */
         .nav-tabs {
             display: flex;
             justify-content: center;
             background-color: #111827;
-            padding: 10px;
+            padding: 12px;
             gap: 10px;
             flex-wrap: wrap;
             position: sticky;
@@ -47,7 +47,7 @@
             background-color: #1f2937;
             color: var(--text-muted);
             border: none;
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
@@ -61,7 +61,7 @@
         /* Container Layout */
         .container {
             max-width: 1000px;
-            margin: 20px auto;
+            margin: 25px auto;
             padding: 15px;
         }
         .section-content {
@@ -73,9 +73,9 @@
         card {
             background-color: var(--card-bg);
             display: block;
-            padding: 20px;
+            padding: 25px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.4);
         }
         h2 {
@@ -88,27 +88,27 @@
         /* Match Cards */
         .match-card {
             background-color: #334155;
-            padding: 15px;
+            padding: 15px 20px;
             border-radius: 8px;
             margin: 12px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         .team-box {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: bold;
             flex: 1;
-            min-width: 120px;
+            min-width: 140px;
         }
-        .team-box img { width: 30px; height: 30px; object-fit: contain; }
+        .team-box img { width: 32px; height: 32px; object-fit: contain; }
         .match-center {
             text-align: center;
-            min-width: 120px;
+            min-width: 130px;
         }
         .badge-live {
             background-color: var(--live-red);
@@ -117,20 +117,19 @@
             border-radius: 4px;
             font-size: 0.75rem;
             font-weight: bold;
-            animation: pulse 1.5p infinite;
         }
         .score-display {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             background: #0f172a;
             padding: 4px 12px;
             border-radius: 6px;
             letter-spacing: 2px;
+            margin: 4px 0;
         }
         
         /* Live Editor Controls */
         .score-editor {
-            margin-top: 5px;
             display: flex;
             gap: 5px;
             justify-content: center;
@@ -142,11 +141,11 @@
             padding: 2px 8px;
             cursor: pointer;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         .score-editor button:hover { background: var(--accent); }
 
-        /* Tables (Group Stage & Player Values) */
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -159,8 +158,10 @@
         }
         th { color: var(--accent-glow); background: #111827; }
         .val-tag { color: var(--success); font-weight: bold; }
+        .team-cell { display: flex; align-items: center; gap: 10px; }
+        .team-cell img { width: 24px; height: 24px; object-fit: contain; }
 
-        /* Suggestion Form */
+        /* Form */
         input, textarea {
             width: 100%;
             padding: 12px;
@@ -187,17 +188,17 @@
 
     <header>
         <h1>Pro Football Hub</h1>
-        <p>Your Ultimate Live Scores, Fixtures, Groups & Market Values</p>
+        <p>Live Scores, Champions Fixtures, Group Tables & Market Values</p>
     </header>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar Tabs -->
     <div class="nav-tabs">
-        <button class="nav-tab active" onclick="switchTab('home')">🏠 Home</button>
-        <button class="nav-tab" onclick="switchTab('live')">🔴 Live Matches</button>
-        <button class="nav-tab" onclick="switchTab('fixtures')">📅 New Fixtures</button>
-        <button class="nav-tab" onclick="switchTab('groups')">📊 Group Stage</button>
-        <button class="nav-tab" onclick="switchTab('players')">💰 Player Values</button>
-        <button class="nav-tab" onclick="switchTab('support')">💬 Support & Suggestions</button>
+        <button class="nav-tab active" onclick="switchTab('home', event)">🏠 Home</button>
+        <button class="nav-tab" onclick="switchTab('live', event)">🔴 Live Matches</button>
+        <button class="nav-tab" onclick="switchTab('fixtures', event)">📅 New Fixtures</button>
+        <button class="nav-tab" onclick="switchTab('groups', event)">📊 Group Stage</button>
+        <button class="nav-tab" onclick="switchTab('players', event)">💰 Player Values</button>
+        <button class="nav-tab" onclick="switchTab('support', event)">💬 Support & Suggestions</button>
     </div>
 
     <div class="container">
@@ -205,9 +206,9 @@
         <!-- HOME SECTION -->
         <div id="home" class="section-content active">
             <card>
-                <h2>Welcome to Pro Football Hub!</h2>
-                <p>Explore the tabs above to check out live updating scores, upcoming match fixtures, tournament group standings, and estimated player transfer market values.</p>
-                <p>Want something added? Head over to the <b>Support & Suggestions</b> tab and drop your ideas!</p>
+                <h2>Welcome to Pro Football Hub</h2>
+                <p>Your ultimate destination for European football. Use the navigation bar above to explore live interactive match scoreboards, upcoming tournament fixtures, group tables, and player market valuations.</p>
+                <p>Have ideas for new features or teams? Drop your request in the <b>Support & Suggestions</b> tab!</p>
             </card>
         </div>
 
@@ -215,7 +216,7 @@
         <div id="live" class="section-content">
             <card>
                 <h2>Live Matches (Interactive Scorer)</h2>
-                <p style="color:var(--text-muted); font-size:0.9rem;">Use the buttons below to manually test/change match scores and timers in real-time!</p>
+                <p style="color:var(--text-muted); font-size:0.9rem;">Test the live match controller by clicking buttons to add goals or reset scores in real-time!</p>
                 
                 <div class="match-card">
                     <div class="team-box">
@@ -237,19 +238,19 @@
 
                 <div class="match-card">
                     <div class="team-box">
-                        <img src="https://crests.football-data.org/65.png" alt="Man City"> Man City
+                        <img src="https://crests.football-data.org/5.png" alt="Bayern"> Bayern Munich
                     </div>
                     <div class="match-center">
-                        <span class="badge-live">LIVE 42'</span>
-                        <div class="score-display" id="score2">0 - 0</div>
+                        <span class="badge-live">LIVE 61'</span>
+                        <div class="score-display" id="score2">1 - 1</div>
                         <div class="score-editor">
                             <button onclick="updateScore('score2', 1, 0)">+Home</button>
                             <button onclick="updateScore('score2', 0, 1)">+Away</button>
-                            <button onclick="resetScore('score2', '0 - 0')">Reset</button>
+                            <button onclick="resetScore('score2', '1 - 1')">Reset</button>
                         </div>
                     </div>
                     <div class="team-box" style="justify-content: flex-end;">
-                        Arsenal <img src="https://crests.football-data.org/57.png" alt="Arsenal">
+                        Inter Milan <img src="https://crests.football-data.org/108.png" alt="Inter">
                     </div>
                 </div>
             </card>
@@ -259,15 +260,25 @@
         <div id="fixtures" class="section-content">
             <card>
                 <h2>Upcoming Match Fixtures</h2>
+                
                 <div class="match-card">
-                    <div class="team-box"><img src="https://crests.football-data.org/5.png" alt="Bayern"> Bayern Munich</div>
-                    <div class="match-center" style="color:var(--accent-glow); font-weight:bold;">Saturday, 8:00 PM</div>
-                    <div class="team-box" style="justify-content: flex-end;">Dortmund <img src="https://crests.football-data.org/4.png" alt="Dortmund"></div>
+                    <div class="team-box">
+                        <img src="https://crests.football-data.org/65.png" alt="Man City"> Manchester City
+                    </div>
+                    <div class="match-center" style="color:var(--accent-glow); font-size:0.9rem;">Tuesday, 8:00 PM</div>
+                    <div class="team-box" style="justify-content: flex-end;">
+                        Paris Saint-Germain <img src="https://crests.football-data.org/524.png" alt="PSG">
+                    </div>
                 </div>
+
                 <div class="match-card">
-                    <div class="team-box"><img src="https://crests.football-data.org/66.png" alt="Man Utd"> Man United</div>
-                    <div class="match-center" style="color:var(--accent-glow); font-weight:bold;">Sunday, 4:30 PM</div>
-                    <div class="team-box" style="justify-content: flex-end;">Liverpool <img src="https://crests.football-data.org/64.png" alt="Liverpool"></div>
+                    <div class="team-box">
+                        <img src="https://crests.football-data.org/4.png" alt="Dortmund"> Borussia Dortmund
+                    </div>
+                    <div class="match-center" style="color:var(--accent-glow); font-size:0.9rem;">Wednesday, 8:00 PM</div>
+                    <div class="team-box" style="justify-content: flex-end;">
+                        Arsenal <img src="https://crests.football-data.org/57.png" alt="Arsenal">
+                    </div>
                 </div>
             </card>
         </div>
@@ -275,7 +286,7 @@
         <!-- GROUP STAGE SECTION -->
         <div id="groups" class="section-content">
             <card>
-                <h2>Group Stage Standings</h2>
+                <h2>Champions League Group Standings</h2>
                 <table>
                     <thead>
                         <tr>
@@ -287,10 +298,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>1</td><td>⭐ Real Madrid</td><td>3</td><td>+5</td><td><b>9</b></td></tr>
-                        <tr><td>2</td><td>⭐ Bayern Munich</td><td>3</td><td>+3</td><td><b>6</b></td></tr>
-                        <tr><td>3</td><td>⭐ AC Milan</td><td>3</td><td>-2</td><td><b>3</b></td></tr>
-                        <tr><td>4</td><td>⭐ Porto</td><td>3</td><td>-6</td><td><b>0</b></td></tr>
+                        <tr>
+                            <td>1</td>
+                            <td><div class="team-cell"><img src="https://crests.football-data.org/86.png" alt="Real Madrid"> Real Madrid</div></td>
+                            <td>3</td><td>+5</td><td><b>9</b></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><div class="team-cell"><img src="https://crests.football-data.org/5.png" alt="Bayern"> Bayern Munich</div></td>
+                            <td>3</td><td>+3</td><td><b>6</b></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><div class="team-cell"><img src="https://crests.football-data.org/108.png" alt="Inter"> Inter Milan</div></td>
+                            <td>3</td><td>-1</td><td><b>3</b></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><div class="team-cell"><img src="https://crests.football-data.org/503.png" alt="Porto"> FC Porto</div></td>
+                            <td>3</td><td>-7</td><td><b>0</b></td>
+                        </tr>
                     </tbody>
                 </table>
             </card>
@@ -299,7 +326,7 @@
         <!-- PLAYER VALUES SECTION -->
         <div id="players" class="section-content">
             <card>
-                <h2>Player Market Values</h2>
+                <h2>Top Player Market Values</h2>
                 <table>
                     <thead>
                         <tr>
@@ -322,15 +349,15 @@
         <div id="support" class="section-content">
             <card>
                 <h2>Support & Suggestions</h2>
-                <p>Have ideas for new features, team icons, or leagues to add? Send your feedback here!</p>
+                <p>Have feature requests or suggestions for new team badges? Send them here!</p>
                 <form onsubmit="handleSuggestion(event)">
-                    <label>Your Name / Email:</label>
+                    <label>Your Name:</label>
                     <input type="text" id="sugName" placeholder="Enter your name..." required>
                     
                     <label>Your Suggestion / Support Message:</label>
-                    <textarea id="sugText" rows="4" placeholder="Type what features you want next..." required></textarea>
+                    <textarea id="sugText" rows="4" placeholder="Type what you want added next..." required></textarea>
                     
-                    <button type="submit" class="submit-btn">Submit Suggestion</button>
+                    <button type="submit" class="submit-btn">Submit Feedback</button>
                 </form>
                 <p id="sugResponse" style="color:var(--success); margin-top:10px; font-weight:bold;"></p>
             </card>
@@ -339,8 +366,8 @@
     </div>
 
     <script>
-        // Tab switching logic
-        function switchTab(tabId) {
+        // Tab switcher logic
+        function switchTab(tabId, event) {
             const tabs = document.querySelectorAll('.section-content');
             tabs.forEach(tab => tab.classList.remove('active'));
             
@@ -351,7 +378,7 @@
             event.currentTarget.classList.add('active');
         }
 
-        // Live Score Changer logic
+        // Live score management logic
         function updateScore(elementId, homeAdd, awayAdd) {
             const scoreEl = document.getElementById(elementId);
             let parts = scoreEl.innerText.split(' - ');
@@ -373,5 +400,7 @@
         }
     </script>
 
+</body>
+</html>
 </body>
 </html>
